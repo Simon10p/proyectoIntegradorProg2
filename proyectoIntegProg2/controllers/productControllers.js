@@ -5,8 +5,9 @@ const lista = catalogo.lista
 
 const controlador ={
     index: function(req,res){
-        res.render('catalogoCompleto', {lista: lista})
+        res.render('index', {lista: lista})
     }
+    
 }
 
 module.exports = controlador
