@@ -1,11 +1,22 @@
 let data = {
-    lista: [
-        {
-            equipo: "Barca",
-            jugador: "lio",
-            numero: 10
-        }
+    usuario: {
+        email: "",
+        usuario: "",
+        contraseña: "",
+        fechaNacimiento: "",
+        DNI: "",
+        pf: ""
+    },
+    productos: [
+
+    ],
+    comentarios: [
+        {usuario: ""},
+        {textoComent: ""},
+        {pf: ""}
+
     ]
+    
 }
 
 module.exports = data
