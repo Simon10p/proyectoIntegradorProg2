@@ -527,4 +527,22 @@ textarea.form-input {
     width: 95%;
     margin: auto;
   }
+
+  .containFooter {
+    display: flex;
+    flex-direction: column;
+    margin: 2.8vh;
+  }
+  
+  .tituloFooter{
+    text-align: center;
+    padding: 1.4 vh;
+  }
+
+  .footerNombres {
+    display:flex;
+    height: 5.6 vh;
+    justify-content: center;
+    align-items: center;
+  }
 }
