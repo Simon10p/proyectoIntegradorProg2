@@ -9,6 +9,6 @@ router.get('/register', usersController.register)
 
 router.get('/profile', usersController.profile)
 
-router.get('/edit-profile', usersController.edit)
+router.get('/edit', usersController.edit)
 
 module.exports = router;

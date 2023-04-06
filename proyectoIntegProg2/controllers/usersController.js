@@ -1,3 +1,5 @@
+const data = require('../db/database')
+
 const usersController = {
     login: function(req, res) {
         res.render('login');
@@ -6,7 +8,9 @@ const usersController = {
         res.render('register');
       },
     profile: function(req, res) {
-        res.render('profile');
+        res.render('profile',{
+          remeras : data.remeras
+        });
       },
     edit: function(req, res) {
         res.render('profile-edit');
