@@ -1,4 +1,15 @@
 let data = {
+    remeras: [
+        {
+            nombre: '2',
+            imgUrl: '2',
+            descripcion: '2',
+            comentarios: [
+                {}
+            ]
+        }
+
+    ],
     usuario: {
         email: "",
         usuario: "",
@@ -7,9 +18,6 @@ let data = {
         DNI: "",
         pf: ""
     },
-    productos: [
-
-    ],
     comentarios: [
         {usuario: ""},
         {textoComent: ""},
