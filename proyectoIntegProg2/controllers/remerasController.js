@@ -5,7 +5,7 @@ const lista = catalogo.lista
 
 const controlador ={
     index: function(req,res){
-        res.render('index', {lista: lista})
+        res.send("holaaa")
     }
     
 }
