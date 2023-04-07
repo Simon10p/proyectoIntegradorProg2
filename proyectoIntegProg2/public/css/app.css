@@ -296,6 +296,21 @@ hr {
   padding: 15px 0;
 }
 
+.nuestroFooter{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction:row;
+}
+
+.footerNombres{
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.nombres{
+  display: block;
+
+}
 
 /*====== Product Detail ======*/
 .product-detail {
