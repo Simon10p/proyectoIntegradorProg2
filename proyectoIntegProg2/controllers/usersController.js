@@ -8,7 +8,7 @@ const usersController = {
       },
     register: function(req, res) {
         res.render('register', {
-          usuarioLogueado: true
+          usuarioLogueado: false
       });
       },
     profile: function(req, res) {
