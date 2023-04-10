@@ -16,11 +16,23 @@
 				Resultados de tu busqueda
 			</h2>
 				<div class="container_busqueda">
-					<% for( let i = 0; i < arrayRemeras.length; i++ ) { %>
-						<%if () {
-							
-						}
-					<% } %>
+					<div class="col-12 col-sm-6 col-lg-3">
+						<section class="product-box">
+							<% for(let i=0; i<3; i++){%>
+							<a href="/remeras/product">
+								<figure class="product-box_image">
+									<img src=<%= remeras[i].imgUrl%> alt=<%= remeras[i].nombre%>>
+								</figure>
+								<article class="product-box_data">
+									<h2><%= remeras[i].nombre%></h2>
+									<p><%= remeras[i].descripcion%></p>
+									<p><%= remeras[i].comentarios%></p>
+									<br>
+								</article>
+							</a>
+						<%}%>
+						</section>
+					</div>
 				</div>
 			</section>
 
