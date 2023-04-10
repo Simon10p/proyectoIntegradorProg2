@@ -196,6 +196,7 @@ hr {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .product-box_data h2 {
