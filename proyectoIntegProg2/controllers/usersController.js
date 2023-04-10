@@ -14,14 +14,21 @@ const usersController = {
     profile: function(req, res) {
         res.render('profile',{
           remeras : data.remeras,
-          usuarioLogueado: true
+          usuarioLogueado: true,
+          user : data.usuario,
         });
       },
     edit: function(req, res) {
         res.render('profile-edit', {
-          usuarioLogueado: true
+          usuarioLogueado: true,
+          user : data.usuario
       });
-      },     
-}
+    },
+    header: function(req, res){
+      res.send("header",{
+        user : data.usuario
+      })
+    }      
+    }
 
 module.exports = usersController

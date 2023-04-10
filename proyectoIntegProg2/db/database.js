@@ -12,9 +12,10 @@ let data = {
             nombre: 'Barcelona 1973-74',
             imgUrl: '/images/barcelona-1973-74-1.jpeg',
             descripcion: 'Camiseta vintage de fútbol del Barcelona 1973/74. Ganador de la Liga, campeón de España',
-            comentarios: [
-                {Nicoshakalis: 'La calidad es la de la original, no me lo esperaba' }
-            ]
+            comentarios: 
+                {Nicoshakalis: 'La calidad es la de la original, no me lo esperaba',
+            Simon10p: "vamos barca" }
+            
         },
         {
             nombre: 'Arabia Saudita 1998',
@@ -88,14 +89,14 @@ let data = {
         contraseña: "hola1234",
         fechaNacimiento: "06/03/2002",
         DNI: "46834788",
-        pf: ""
+        pf: "/images/BorreRiver.jpeg"
     },
-    comentarios: [
-        {usuario: ""},
-        {textoComent: ""},
-        {pf: ""}
-
-    ]
+    comentarios: {
+        usuario : "Simon Diez Pena",
+        textoComentarios : "Esta muy buena la casaca",
+        pf : ""
+    }
+    
     
 }
 module.exports = data
