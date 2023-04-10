@@ -1,5 +1,4 @@
-USE datos_proyectoint;
-
+CREATE SCHEMA dataMSN;
 
 CREATE TABLE usuarios (
 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
