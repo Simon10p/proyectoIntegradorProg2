@@ -5,7 +5,7 @@
 	<!-- Banner -->
 <main>
 	<div class="banner">
-		<img src="/images/img-home-banner.jpg" alt="Banner de ofertas">
+		<img src="/images/banner-prog" alt="Banner de ofertas">
 	</div>
 	<!-- /Banner -->
 
@@ -13,12 +13,12 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Novedades</h2>
+				<h2 class="products-title">En Stock</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
+			<% for(let i=0; i<remeras.length; i++){%>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<% for(let i=0; i<remeras.length; i++){%>
 					<a href="/remeras/product">
 						<figure class="product-box_image">
 							<img src=<%= remeras[i].imgUrl%> alt=<%= remeras[i].nombre%>>
@@ -27,12 +27,11 @@
 							<h2><%= remeras[i].nombre%></h2>
 							<p><%= remeras[i].descripcion%></p>
 							<p><%= remeras[i].comentarios%></p>
-							<br>
 						</article>
 					</a>
-				<%}%>
-				</section>
+			</section>
 			</div>
+			<%}%>
 
 
 		</div>

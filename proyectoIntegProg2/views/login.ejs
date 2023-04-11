@@ -14,9 +14,13 @@
 			<form action="/users/profile" method="get">
 				<input type="email" name="usuario" placeholder="usuario">
 				<input type="password" name="password" placeholder="contraseña">
-				<input type="checkbox" name="recordarme" placeholder="recordarme">
-				<button type="submit" value="Enviar"></button>				
-				
+				<div class="enviar">
+					<button type="submit">Enviar</button>
+					<div class="recordar">
+						<span>Recordarme</span>
+						<input type="checkbox" name="recordarme" label="recordarme">	
+					</div>
+				</div>		
 			</form>
 
 </main>

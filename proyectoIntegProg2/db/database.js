@@ -91,12 +91,24 @@ let data = {
         DNI: "46834788",
         pf: "/images/BorreRiver.jpeg"
     },
-    comentarios: {
+    comentarios: [{
         usuario : "Simon Diez Pena",
         textoComentarios : "Esta muy buena la casaca",
-        pf : ""
-    }
-    
+        pf : "",
+    },
+        {
+            usuario: "Nicolas Shakalis",
+            textoComentarios : "Que buena pilchaa",
+            pf: "",
+        },
+        {
+            usuario : "Mateo Podetti",
+            textoComentarios: "La pedi el lunes, y el miercoles en el f5 semanal ya la taba usando, tremendoo",
+            pf : ""
+        }
+
+   
+],
     
 }
 module.exports = data

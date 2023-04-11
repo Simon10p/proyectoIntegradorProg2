@@ -63,12 +63,53 @@ hr {
   border: none;
   border-bottom: solid 1px var(--light-gray);
 }
+/*====== Register ======*/
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+input {
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0069d9;
+}
+.enviar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 55%;
+}
+.recordar{
+  display: flex;
+}
+.recordar span{
+  margin-top: 3% ;
+}
 
 
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color: var(--yellow);
+  background-color:cadetblue;
 }
 
 .main-header_home-link,
@@ -177,9 +218,11 @@ hr {
 .product-box {
   background-color: #ffffff;
   border-radius: 5px;
-  overflow: hidden;
+  /* overflow: hidden; */
   transition: 300ms;
   margin: 20px 0;
+  display: flex;
+  width: 100%;
 }
 
 .product-box a {
@@ -264,7 +307,17 @@ hr {
   padding: 20px 0;
   margin-top: 80px;
 }
+.containFooter{
+  /* display: flex;
+  flex-direction: column; */
+  margin: 2.8vh 0vw;
+  flex-wrap: wrap;
+}
 
+.main-footer .logoFooter {
+  max-width: 100%;
+  height: auto;
+}
 .footer-data {
   text-align: center;
 }
@@ -297,21 +350,31 @@ hr {
   padding: 15px 0;
 }
 
-.nuestroFooter{
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction:row;
+.imagenFooter{
+  width: 20vw;
+  height: 10vh;
+  text-align: center;
+  padding: 1.4vh 0vw;
 }
-
 .footerNombres{
   display: flex;
-  flex-wrap: nowrap;
+  height: 5.6vh;
+  justify-content: center;
+  align-items: center;
 }
-
 .nombres{
   display: block;
-
+  font-family: 'Raleway', sans-serif;
+  width: 13vw;
+  color:black;
+  font-size: 20px;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
 }
+
+
+
 
 /*====== Product Detail ======*/
 .product-detail {
@@ -491,6 +554,7 @@ textarea.form-input {
   border-radius: 4px;
   color: #fff;
 }
+
 
 
 /*====== Media-Queries ======*/
