@@ -346,7 +346,7 @@ button:hover {
   text-align: center;
 }
 
-.containFooter .logoFooter {
+.logoFooter {
   max-width: 280px;
 }
 
@@ -354,7 +354,7 @@ button:hover {
   margin: 30px ;
 }
 
-.footerNombres .nombres {
+.nombres {
   display: inline-block;
   font-size: 1rem;
   margin: 0 20px
