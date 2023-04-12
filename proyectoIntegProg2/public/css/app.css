@@ -213,6 +213,11 @@ button:hover {
   /* margin-bottom: 20%; */
 }
 
+/*====== Busqueda ======*/
+
+.container_busqueda{
+  display: flex;
+}
 
 /*====== Products ======*/
 .products-wrapper {
