@@ -109,7 +109,7 @@ button:hover {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color:cadetblue;
+  background-color: #1f2821;
 }
 
 .main-header_home-link,
@@ -151,6 +151,7 @@ button:hover {
 }
 
 
+
 /*====== Main Navbar ======*/
 .btn-toggle-navbar {
   background-color: var(--dark-blue);
@@ -166,11 +167,21 @@ button:hover {
 .main-navbar {
   margin-top: 20px;
   display: none;
+  color: wheat;
 }
 
 .left-navbar,
 .right-navbar {
   font-size: 1.5em;
+  color: white;
+}
+
+
+.main-header_credit-link{
+  font-size: 2rem;
+  font-weight:bold ;
+  font-family:'Times New Roman', Times, serif;
+  color: white;
 }
 
 .logout{
@@ -195,11 +206,11 @@ button:hover {
 
 /*====== Banner ======*/
 .banner {
-  background-image: url(/images/img-home-banner.jpg);
+  background-image: url(/images/pngwing.com.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  height: 100px;
+  /* margin-bottom: 20%; */
 }
 
 
@@ -212,7 +223,10 @@ button:hover {
 .products-title {
   font-size: 2.4em;
   font-weight: 400;
-  color: var(--gray);
+  color: black;
+  margin-left: 39%;
+  font-family :'Times New Roman', Times, serif;
+ 
 }
 
 .product-box {
@@ -302,77 +316,44 @@ button:hover {
 }
 
 /*====== Footer ======*/
-.main-footer {
-  background-color: #ffffff;
-  padding: 20px 0;
-  margin-top: 80px;
+.main-footer{
+  background-color: #1f2821;;
+  color: white;
+  padding: 50px;
 }
+
+.main-footer h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.main-footer p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+/* Section */
 .containFooter{
-  /* display: flex;
-  flex-direction: column; */
-  margin: 2.8vh 0vw;
-  flex-wrap: wrap;
-}
-
-.main-footer .logoFooter {
-  max-width: 100%;
-  height: auto;
-}
-.footer-data {
+  background-color: white;
+  padding: 50px ;
   text-align: center;
 }
 
-.footer-data i {
-  color: var(--light-blue);
-  font-size: 3.5em;
+.containFooter .logoFooter {
+  max-width: 280px;
 }
 
-.footer-data h2 {
-  color: var(--gray);
-  font-size: 2.4em;
-  font-weight: 400;
-}
-
-.footer-data p {
-  color: var(--gray);
-  font-size: 1.5em;
-  font-weight: 300;
-}
-
-.sub-footer {
-  border-top: 1px solid var(--light-gray);
-  background-color: #ffffff;
-}
-
-.sub-footer p {
-  margin: 0;
-  color: var(--gray);
-  padding: 15px 0;
-}
-
-.imagenFooter{
-  width: 20vw;
-  height: 10vh;
-  text-align: center;
-  padding: 1.4vh 0vw;
-}
 .footerNombres{
-  display: flex;
-  height: 5.6vh;
-  justify-content: center;
-  align-items: center;
-}
-.nombres{
-  display: block;
-  font-family: 'Raleway', sans-serif;
-  width: 13vw;
-  color:black;
-  font-size: 20px;
-  font-weight: 400;
-  display: flex;
-  justify-content: center;
+  margin: 30px ;
 }
 
+.footerNombres .nombres {
+  display: inline-block;
+  font-size: 1rem;
+  margin: 0 20px
+}
 
 
 
@@ -404,6 +385,7 @@ button:hover {
   padding: 15px 15px 15px 40px;
   font-size: 1.8em;
   line-height: 1.5;
+
 }
 
 .product-detail-price {
