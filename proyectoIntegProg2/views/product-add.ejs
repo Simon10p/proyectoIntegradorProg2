@@ -13,11 +13,12 @@
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12"> 
 			</h2>
-			<form action="">
+			<form action="/remeras/add" method="get">
 				<input type="file" name="imagen" id="">
-				<input type="text" name="product" value="" id="">
-				<input type="text" name="descripcion">
-				<input type="date" name="fechaCarga" id="">
+				<input type="text" name="product" value="" id="" placeholder="Nombre del producto">
+				<input type="text" name="descripcion" placeholder="Descripcion del producto">
+				<input type="date" name="fechaCarga" id="" placeholder="Año del producto">
+				<button type="submit">Enviar</button>
 			</form>
 </main>	
 <% - include('./partials/footer') %>
