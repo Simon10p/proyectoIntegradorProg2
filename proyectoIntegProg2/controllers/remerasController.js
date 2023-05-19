@@ -1,10 +1,15 @@
 const express = require("express")
-const { remeras } = require("../db/database")
-const router = express.Router()
-const data = require("../db/database")
+const db = require("../database/models/Producto")
 
 const remerasController ={
     product: function(req,res){
+        db.products.findAll({
+            include: [{association:"productos_usuarios"}]
+        }),
+        db.Product.findAll()
+        .then(function(result){
+            
+        })
         res.render("product", {
             usuarioLogueado: true,
             user: data.usuario,
