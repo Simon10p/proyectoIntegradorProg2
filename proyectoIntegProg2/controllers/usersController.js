@@ -41,7 +41,37 @@ const usersController = {
       res.send("header",{
         user : data.usuario
       })
-    }      
+    },
+    create: function(req, res){
+      let name = req.body.name
+      let email = req.body.email
+      let password = req.bpdy.password
+
+      let passEncriptada = bcrpt.hashSync(password, 12)
+      db.users.create({
+        name: name,
+        email: email,
+        password: passEncriptada
+      })
+    },
+    checkUser: function(req,res){
+    },
+    update: function(req, res){
+      let id = req.params.id
+      let {name,email} = req.bodydb.Users.update({
+          name: name,
+          email: email,
+
+      }, {
+          where:{
+              id: id
+          }
+      })
+      .then(function(resp){
+          res.redirect("/users/profile" + id)
+      })
+    }
+
     }
 
 module.exports = usersController
