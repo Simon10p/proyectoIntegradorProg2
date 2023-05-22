@@ -1,21 +1,43 @@
-const express = require("express")
-const db = require("../database/models/Producto")
+const db = require("../database/models/index")
+const op = db.Sequelize.op
 
 const remerasController ={
     product: function(req,res){
         let id = req.params.id
-        db.products.findByPk(id, {raw: True})
+        db.productos.findByPk(id, {
+            raw: true,
+            nested: true,
+            include: [{association:"productos_usuarios"}]
+        })
         .then(function(data){
             res.render('product',{
                 usuarioLogueado: false,
-                remera: data
+                producto: data
             })
         })
-        db.products.findAll({
-            include: [{association:"productos_usuarios"}]
-        }),
-        db.Product.findAll()
-        .then(function(result){
+        .catch(function(error){
+            console.log(error)
+        })
+
+        db.productos.findAll({
+            raw:true
+        })
+        .then(function(data){
+        })
+        .catch(function(error){
+            console.log(error)
+        })
+        db.usuarios.findAll({
+            raw: true
+        })
+        .then(function(data){
+            console.log(data)
+        })
+        db.comentarios.findAll({
+            raw:true
+        })
+        .then(function(data){
+            console.log(data)
         })
         res.render("product", {
             usuarioLogueado: true,
@@ -31,13 +53,17 @@ const remerasController ={
         })
     },
     search: function(req,res){
-        res.render("search-results", {
-            remeras: data.remeras,
-            usuarioLogueado: true,
-            user: data.usuario
+        db.productos.findAll({
+            raw:true
+        })
+        .then(function(data){
+            res.render("search-results", {
+                remeras: data,
+                usuarioLogueado: true,
+                user: data.usuario
+            })
         })
     }
-    
 }
 
 module.exports = remerasController

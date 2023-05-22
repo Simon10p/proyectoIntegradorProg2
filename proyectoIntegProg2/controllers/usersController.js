@@ -1,4 +1,6 @@
-const data = require('../db/database')
+const db = require("../database/models/index")
+const op = db.Sequelize.op
+
 
 const usersController = {
     login: function(req, res) {
@@ -12,11 +14,22 @@ const usersController = {
       });
       },
     profile: function(req, res) {
+      db.usuarios.findAll({
+        raw:true,
+        nested: true,
+        include: [{association:"usuarios_productos"}]
+      })
+      .then(function(data){
         res.render('profile',{
           remeras : data.remeras,
+          //como hago para ademas mandarle la info de las remeras
           usuarioLogueado: true,
-          user : data.usuario,
+          user : data
         });
+        })
+        .catch(function(error){
+          console.log(error)
+        })
       },
     edit: function(req, res) {
         res.render('profile-edit', {

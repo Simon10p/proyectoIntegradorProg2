@@ -1,11 +1,10 @@
-const data = require('../db/database')
 const db = require("../database/models/index")
 const op = db.Sequelize.op
 
 
 const controlador = {
     index: function(req,res){
-        db.products.findAll({
+        db.productos.findAll({
             where:{
                 id:{
                     [op]: 1

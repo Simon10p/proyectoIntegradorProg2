@@ -1,7 +1,7 @@
 const Usuario = require("./Usuario")
 
 module.exports = function (sequelize,DataTypes){
-    let alias= "Products"
+    let alias= "productos"
     let columnas= {
         id: {
             type:DataTypes.INTEGER,
@@ -9,26 +9,17 @@ module.exports = function (sequelize,DataTypes){
             autoIncrement:true,
             unsigned: true
         },
-        username:{
-            type:DataTypes.STRING,
+        usuario_id: {
+            type:DataTypes.INTEGER,
+            unsigned: true
+        },
+        nombre_producto: {
+            type: DataTypes.STRING,
             allowNull: true
         },
-        email: {
-            type:DataTypes.STRING,
-            allowNull: true,
-            unique: true
-        },
-        foto_perfil:{
-            type:DataTypes.STRING
-        },
-        cumpleaños:{
-            type:DataTypes.DATE,
+        descripcion: {
+            type: DataTypes.STRING,
             allowNull: true
-        },
-        DNI:{
-        type:DataTypes.INTEGER,
-        allowNull: true,
-        unique:true
         }
     }
     let config= {
@@ -38,12 +29,14 @@ module.exports = function (sequelize,DataTypes){
     const Products = sequelize.define(alias,columnas,config)
 
     Products.associate = function(models){
-        Products.belongsTo(models.users,{
+        Products.belongsTo(models.usuarios,{
             as: "productos_usuarios",
             foreignKey: usuario_id,
-        } 
-            )
+        }),
+        Products.hasMany(models.comentarios,{
+            as:"productos_comentarios",
+            foreignKey: producto_id
+        })
     }
-
     return Products
 }

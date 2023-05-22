@@ -21,19 +21,19 @@ module.exports = function (sequelize,DataTypes){
         tableName:"Comentarios",
         timestamps: true
     }
-    const comentarios = sequelize.define(alias,columnas,config)
+    const Comentarios = sequelize.define(alias,columnas,config)
 
-    users.associate = function(models){
-        comentarios.belongsTo(models.users, {
+    comentarios.associate = function(models){
+        comentarios.belongsTo(models.usuarios, {
             as: "comentarios_usuarios",
             foreignKey: usuario_id,
             timestamps: false,
         })
-        comentarios.belongsTo(models.products, {
+        comentarios.belongsTo(models.productos, {
             as: "comentarios_productos",
             foreignKey: producto_id,
             timestamps: false,
         })
     }
-    return users
+    return Comentarios
 }

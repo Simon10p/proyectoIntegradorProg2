@@ -8,7 +8,7 @@
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
 			<!-- <h2 class="products-title">Camiseta Austria-1938</h2>  -->
-			<h2 class="products-title"> <%= remera.nombre_prodructo%></h2>
+			<h2 class="products-title"> <%= producto.nombre_prodructo%></h2>
 			<p class="product-detail-description">
 				<a href="/remeras/add">Editar</a>
 			</p>
@@ -19,7 +19,7 @@
 					<img src='/images/Austira-1938.jpeg' alt="" class="product-detail-img">
 					<!-- <p class="product-detail-description">
 						Camiseta vintage de fútbol de Austria 1938, segunda equipación. Camiseta usada en el partido del Anschluss entre Austria y Alemania para celebrar la anexión a este última que tenía que terminar con un empate pero Austria ganó gracias a las hazañas de Matthias Sindelar </p> -->
-						<p class="product-detail-description"><%= remera.descripcion%> </p>
+						<p class="product-detail-description"><%= producto.descripcion%> </p>
 					</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
@@ -28,8 +28,8 @@
 							<img src="https://via.placeholder.com/35" alt="">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="/users/profile"> <%= comentarios[i].usuario %> </a> </strong>
-								<%= comentarios[i].textoComentarios %> </p>
+								<strong> <a href="/users/profile"> <%= comentarios[i].usuario_id %> </a> </strong>
+								<%= comentarios[i].comentario %> </p>
 							</div>
 						</article>
 						<%}%>
