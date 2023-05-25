@@ -19,6 +19,8 @@ const controlador = {
             raw: true 
         })
         .then(function(data){
+            console.log(data);
+            
             res.render('index', {
                 remeras: data,
                 usuarioLogueado: false

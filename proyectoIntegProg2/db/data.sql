@@ -1,6 +1,6 @@
-CREATE SCHEMA dataMSN;
+USE dataMSN;
 
-CREATE TABLE usuarios (
+CREATE TABLE usuarios ( 
 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 username VARCHAR(30) NOT NULL,
 email VARCHAR(50) NOT NULL UNIQUE,
@@ -11,7 +11,7 @@ DNI INT NOT NULL UNIQUE,
 createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 deletedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+); 
 
 
 CREATE TABLE productos(
@@ -19,6 +19,7 @@ id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 usuario_id INT UNSIGNED,
 nombre_producto VARCHAR(100) NOT NULL,
 descripcion VARCHAR(300) NOT NULL,
+img_url VARCHAR(300),
 createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 deletedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -42,7 +43,7 @@ INSERT INTO usuarios(username, email, password, cumpleaños, dni)
 VALUES('Mateo', 'mp@gmail.com', 'pupo123', '2003-10-08', 45074659);
 
 INSERT INTO usuarios(username, email, password, cumpleaños, dni)
-VALUES('ElPela', 'peladooo@gmail.com', 'sinpelo123', '2004-25-25', 46026839);
+VALUES('ElPela', 'peladooo@gmail.com', 'sinpelo123', '2004-2usuarios-25', 46026839);
 
 INSERT INTO usuarios(username, email, password, cumpleaños, dni)
 VALUES('Shakant', 'nico-tina@outlook.com', 'andapaalla', '2002-03-06', 46834788);
@@ -203,5 +204,6 @@ VALUES (10,5, 'Impresionado con la calidad, la misma que uso cr7 en su momento')
 
 INSERT INTO comentarios(producto_id, usuario_id, comentario)
 VALUES (10,5, 'Buenas tienen stock?');
+
 
 

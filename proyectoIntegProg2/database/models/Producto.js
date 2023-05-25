@@ -20,6 +20,10 @@ module.exports = function (sequelize,DataTypes){
         descripcion: {
             type: DataTypes.STRING,
             allowNull: true
+        },
+        img_url: {
+            type: DataTypes.STRING,
+            allowNull: true
         }
     }
     let config= {
@@ -31,11 +35,11 @@ module.exports = function (sequelize,DataTypes){
     Products.associate = function(models){
         Products.belongsTo(models.usuarios,{
             as: "productos_usuarios",
-            foreignKey: usuario_id,
+            foreignKey: "usuario_id",
         }),
         Products.hasMany(models.comentarios,{
             as:"productos_comentarios",
-            foreignKey: producto_id
+            foreignKey: "producto_id"
         })
     }
     return Products
