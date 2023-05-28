@@ -5,10 +5,12 @@
 	<!-- /Header -->
 
 	<!-- Novedades -->
+
+	<% if(resultadosBusqueda){%>
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Resultados de búsqueda</h2>
+				<h2 class="products-title">Resultados de búsqueda "<%= userSearch %>"</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
 			<section class="container_padre_busqueda">
@@ -16,17 +18,18 @@
 				Resultados de tu busqueda
 			</h2>
 			<div class="container_busqueda">
-				<% for(let i=0; i<3; i++){%>
+				<% for(let i=0; i< remeras.length; i++){%>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/remeras/product/<%-productos[i].id%>">
+						<a href="/remeras/product/<%-remeras[i].id%>">
 							<figure class="product-box_image">
-								<img src=<%= remeras[i].imgUrl%> alt=<%= remeras[i].nombre%>>
+								<img src=<%= remeras[i].img_url%> alt=<%= remeras[i].nombre%>>
 							</figure>
 							<article class="product-box_data">
-								<h2><%= remeras[i].nombre%></h2>
+								<h2><%= remeras[i].nombre_producto%></h2>
 								<p><%= remeras[i].descripcion%></p>
-								<p><%= remeras[i].comentarios%></p>
+								<!-- <p><%= remeras[i].comentarios%></p>
+								como podemos traer aca los comentarios del producto buscado -->
 								<br>
 							</article>
 						</a>
@@ -35,6 +38,10 @@
 				<%}%>
 			</div>
 			</section>
+			<%} else{%>
+				<h2 class="products-title">No se encontraron resultados de tu busqueda: "<%= userSearch %>"</h2>
+			<%}%>
+
 
 </main>
 <%- include('./partials/footer') %>

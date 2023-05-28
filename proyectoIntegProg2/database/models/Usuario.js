@@ -27,6 +27,10 @@ module.exports = function (sequelize,DataTypes){
         type:DataTypes.INTEGER,
         allowNull: true,
         unique:true
+        },
+        cumpleaños:{
+            type:DataTypes.DATE,
+            allowNull: true
         }
     }
     let config= {
