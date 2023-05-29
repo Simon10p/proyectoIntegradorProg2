@@ -5,7 +5,10 @@ const op = db.Sequelize.op
 const controlador = {
     index: function(req,res){
         db.productos.findAll({   
-            raw: true 
+            raw: true,
+            nest: true,
+            include: [{ association: "productos_comentarios"}]
+
         })
         .then(function(data){
             console.log(data);
@@ -13,6 +16,7 @@ const controlador = {
             res.render('index', {
                 remeras: data,
                 usuarioLogueado: false
+
             })
         })        
         .catch(function(err){

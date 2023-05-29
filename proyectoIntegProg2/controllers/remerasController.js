@@ -6,10 +6,12 @@ const remerasController ={
         let id = req.params.id
         db.productos.findByPk(id, {
             raw: true,
-            nested: true,
-            include: [{association:"productos_usuarios"}]
+            nest: true,
+            include: [{association:"productos_usuarios"}],
+            include: [{association: "productos_comentarios"}]
         })
         .then(function(data){
+            console.log(data);
             res.render('product',{
                 usuarioLogueado: false,
                 producto: data
@@ -19,31 +21,6 @@ const remerasController ={
             console.log(error)
         })
 
-        db.productos.findAll({
-            raw:true
-        })
-        .then(function(data){
-        })
-        .catch(function(error){
-            console.log(error)
-        })
-        db.usuarios.findAll({
-            raw: true
-        })
-        .then(function(data){
-            console.log(data)
-        })
-        db.comentarios.findAll({
-            raw:true
-        })
-        .then(function(data){
-            console.log(data)
-        })
-        res.render("product", {
-            usuarioLogueado: true,
-            user: data.usuario,
-            comentarios : data.comentarios
-        })
     },
 
     add: function(req,res){
@@ -73,7 +50,7 @@ const remerasController ={
             raw:true,
             where:{
                 nombre_producto:{
-                    [op.like] : `%${userSearch}%`
+                     [op.like] : `%${userSearch}%`
                 }
             }
         })
