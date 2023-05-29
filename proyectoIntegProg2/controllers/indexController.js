@@ -4,18 +4,7 @@ const op = db.Sequelize.op
 
 const controlador = {
     index: function(req,res){
-        db.productos.findAll({
-            where:{
-                id:{
-                    [op]: 1
-                },
-                nombre_producto:{
-                    [op]: 1
-                },
-            },   
-            order:[
-                ['nombre_producto', 'ASC']
-            ],
+        db.productos.findAll({   
             raw: true 
         })
         .then(function(data){

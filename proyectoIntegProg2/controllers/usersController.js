@@ -72,7 +72,7 @@ const usersController = {
       .then(function(response){
         id = response.id
         //aca entonces lo mando por el res redirect???
-        res.redirect("/users/profile")
+        res.redirect("/users/profile" + id)
       })
       .catch(function(error){
         console.log(error)
