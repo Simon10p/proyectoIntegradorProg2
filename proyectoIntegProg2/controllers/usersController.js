@@ -16,12 +16,15 @@ const usersController = {
       },
     profile: function(req, res) {
       let id = req.params.id
-      db.usuarios.findByPK(id)
+      db.usuarios.findByPK(id, {
+        include: [{association:"usuarios_productos"}]
+      })
         // raw:true,
         // nested: true,
         // include: [{association:"usuarios_productos"}]
         //no c si va esto adentro del fin by pk
       .then(function(data){
+        console.log(data)
         res.render('profile',{
           // remeras : data.remeras,
           //como hago para ademas mandarle la info de las remeras

@@ -11,7 +11,6 @@ module.exports = function (sequelize,DataTypes){
         },
         usuario_id: {
             type:DataTypes.INTEGER,
-            unsigned: true
         },
         nombre_producto: {
             type: DataTypes.STRING,
