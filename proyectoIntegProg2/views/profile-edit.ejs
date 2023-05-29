@@ -12,14 +12,14 @@
 				<h2 class="products-title">Editar mi perfil</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<form action="/users/edit" method="get" id="registerForm">
-				<input type="text" name="email" placeholder="Email" >
-				<input type="text" name="username" placeholder="Nombre de usuario">
-				<input type="password" name="password" placeholder="Contraseña" >
-				<input type="number" name="DNI" placeholder="DNI">
-				<input type="date" name="cumpleaños" placeholder="Fecha de nacimiento" >
-				<input type="url" name="foto_perfil" placeholder="Foto de perfil">
-				<button type="submit">Enviar</button>
+			<form action="/users/edit/<%= user.id %>" method="POST" id="registerForm">
+				<input type="text" name="email" value="<%= user.email %>" >
+				<input type="text" name="username" value="<%= user.username %>">
+				<input type="password" name="password" value="<%= user.password %>" >
+				<input type="number" name="DNI" value="<%= user.DNI  %>">
+				<input type="date" name="cumpleaños" value="<%= user.cumpleaños %>" >
+				<input type="url" name="foto_perfil" value="<%= user.foto_perfil %>">
+				<button type="submit">Confrimar cambios</button>
 			</form>
 
 <!-- "aca tiene que ir la informacion que viene desde el register" -->

@@ -4,16 +4,19 @@ const usersController = require("../controllers/usersController")
 
 /* GET users listing. */
 router.get('/login', usersController.login )
+router.post("/login", usersController.checkUser)
+
 
 router.get('/register', usersController.register)
 router.post('/register', usersController.create)
 //chequiar esta ruta
 
 
-router.get('/profile', usersController.profile)
-router.post("/profile", usersController.checkUser)
+router.get('/profile/:id', usersController.profile)
 
-router.get('/edit', usersController.edit)
+
+router.get('/edit/:id', usersController.edit)
+router.post("/edit/:id", usersController.updateProfile)
 
 
 

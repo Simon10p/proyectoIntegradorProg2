@@ -15,14 +15,15 @@ const usersController = {
       });
       },
     profile: function(req, res) {
-      db.usuarios.findAll({
-        raw:true,
-        nested: true,
-        include: [{association:"usuarios_productos"}]
-      })
+      let id = req.params.id
+      db.usuarios.findByPK(id)
+        // raw:true,
+        // nested: true,
+        // include: [{association:"usuarios_productos"}]
+        //no c si va esto adentro del fin by pk
       .then(function(data){
         res.render('profile',{
-          remeras : data.remeras,
+          // remeras : data.remeras,
           //como hago para ademas mandarle la info de las remeras
           usuarioLogueado: true,
           user : data
@@ -33,11 +34,19 @@ const usersController = {
         })
       },
     edit: function(req, res) {
+      let id = req.params.id
+      db.usuarios.findByPK(id)
+      .then(function(data){
         res.render('profile-edit', {
           usuarioLogueado: true,
-          user : data.usuario
+          user : data
       });
+      })
+      .catch(function(error){
+        console.log(error)
+      })
     },
+
     header: function(req, res){
       res.send("header",{
         user : data.usuario
@@ -76,7 +85,9 @@ const usersController = {
       db.usuarios.findOne({
         where:{
           email
-        }
+        },
+        raw:true
+
       })
       .then(function(usuario){
         let checkPassword = bcrypt.compareSync(password, usuario.password)
@@ -89,19 +100,26 @@ const usersController = {
       })
 
     },
-    update: function(req, res){
+    updateProfile: function(req, res){
       let id = req.params.id
-      let {name,email} = req.bodydb.Users.update({
-          name: name,
-          email: email,
-
-      }, {
+      let {username, email, DNI, cumpleaños, foto_perfil} = req.body
+      db.usuarios.update({
+          username,
+          email,
+          foto_perfil,
+          DNI,
+          cumpleaños
+      },
+      {
           where:{
-              id: id
+              id
           }
       })
-      .then(function(resp){
+      .then(function(response){
           res.redirect("/users/profile" + id)
+      })
+      .catch(function(error){
+        console.log(error)
       })
     }
 
