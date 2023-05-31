@@ -51,8 +51,13 @@ const usersController = {
     },
 
     header: function(req, res){
-      res.send("header",{
-        user : data.usuario
+      //falta capturar el id que calculo que es con sessions.
+      // para mandar la info de el usuario que se esta logueando y mostrarlo en el Header. 
+      db.usuarios.findByPK(id)
+      .then(function(data){
+        res.send("header",{
+          user: data
+        })
       })
     },
     create: function(req, res){

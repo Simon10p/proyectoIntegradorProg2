@@ -1,5 +1,5 @@
 const db = require("../database/models/index")
-const op = db.Sequelize.op
+const Op = db.Sequelize.Op
 
 const remerasController ={
     product: function(req,res){
@@ -7,11 +7,10 @@ const remerasController ={
         db.productos.findByPk(id, {
             raw: true,
             nest: true,
-            include: [{association:"productos_usuarios"}],
-            include: [{association: "productos_comentarios"}]
+            include: [{association:"productos_usuarios"},{association: "productos_comentarios"}],
         })
         .then(function(data){
-            console.log(data);
+            res.send(data)
             res.render('product',{
                 usuarioLogueado: false,
                 producto: data
@@ -50,7 +49,7 @@ const remerasController ={
             raw:true,
             where:{
                 nombre_producto:{
-                     [op.like] : `%${userSearch}%`
+                     [Op.like] : `%${userSearch}%`
                 }
             }
         })
@@ -62,11 +61,10 @@ const remerasController ={
             else{
               resultadosBusqueda = false
             }
-
             res.render("search-results", {
                 remeras: data,
                 usuarioLogueado: true,
-                userSearch: userSearch,
+                userSearch,
                 resultadosBusqueda
             })
         })
@@ -77,3 +75,11 @@ const remerasController ={
 }
 
 module.exports = remerasController
+
+let datos ={
+    "id":1,
+    "usuario_id":null,
+    "nombre_producto":"Argentina 1986",
+    "descripcion":"Camiseta vintage de fútbol de Argentina, ganador de la Copa del Mundo 1986 en México, Argentina-Alemania 3-2","img_url":"/images/argentina-1986-1-1.jpeg","createdAt":"2023-05-29T18:14:21.000Z","updatedAt":"2023-05-29T18:14:21.000Z",
+    "productos_usuarios":
+    {"id":null,"username":null,"email":null,"password":null,"foto_perfil":null,"DNI":null,"cumpleaños":null},"productos_comentarios":{"id":1,"usuario_id":1,"comentario":"QUIERO SER CAMPEON MUNDIAAAAAL","createdAt":"2023-05-29T18:14:21.000Z","updatedAt":"2023-05-29T18:14:21.000Z","producto_id":1}}

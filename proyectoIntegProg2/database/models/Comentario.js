@@ -7,6 +7,11 @@ module.exports = function (sequelize,DataTypes){
             autoIncrement:true,
             unsigned: true
         },
+        producto_id:{
+            type:DataTypes.INTEGER,
+            allowNull: true,
+            unsigned: true
+        },
         usuario_id:{
             type:DataTypes.INTEGER,
             allowNull: true,
@@ -25,12 +30,12 @@ module.exports = function (sequelize,DataTypes){
 
     Comentarios.associate = function(models){
         Comentarios.belongsTo(models.usuarios, {
-            as: "comentarios_usuarios",
+            as: "usuarios_comentarios",
             foreignKey: "usuario_id",
             timestamps: false,
         })
         Comentarios.belongsTo(models.productos, {
-            as: "comentarios_productos",
+            as: "productos_comentarios",
             foreignKey: "producto_id",
             timestamps: false,
         })
