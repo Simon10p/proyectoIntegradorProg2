@@ -1,5 +1,6 @@
+// const data??? falta
 const db = require("../database/models/index")
-const op = db.Sequelize.op
+const op = db.Sequelize.Op
 
 
 const controlador = {
