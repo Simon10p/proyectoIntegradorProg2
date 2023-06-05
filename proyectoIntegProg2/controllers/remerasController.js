@@ -3,7 +3,7 @@ const Op = db.Sequelize.Op
 
 const remerasController ={
     product: function(req,res){
-        let id = req.params.id
+        let id = req.session.user.id
         db.productos.findByPk(id, {
             raw: true,
             nest: true,
@@ -12,7 +12,6 @@ const remerasController ={
         .then(function(data){
             res.send(data)
             res.render('product',{
-                usuarioLogueado: false,
                 producto: data
             })
         })
@@ -24,7 +23,6 @@ const remerasController ={
 
     add: function(req,res){
         res.render("product-add", {
-            usuarioLogueado: true,
             user : data.usuario
         })
     },
@@ -63,7 +61,6 @@ const remerasController ={
             }
             res.render("search-results", {
                 remeras: data,
-                usuarioLogueado: true,
                 userSearch,
                 resultadosBusqueda
             })

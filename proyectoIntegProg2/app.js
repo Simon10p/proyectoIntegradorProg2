@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session')
 
+
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 let remerasRouter = require('./routes/remeras')
@@ -20,6 +22,27 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app,use(session({
+  secret:'----',
+  resave: false,
+  saveUninitialized: false
+}))
+
+app.use(function(req,res, next){
+  req.session.user ={
+    username: '',
+    email: '',
+  }
+  if(req.session.user!== undefined){
+    res.locals.usuarioLogueado = true
+    res.locals.user = req.session.user
+  }
+  else{
+    res.locals.usuarioLogueado = false
+  }
+  return next()
+})
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

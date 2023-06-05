@@ -5,17 +5,13 @@ let bcrypt = require("bcryptjs")
 
 const usersController = {
     login: function(req, res) {
-        res.render('login', {
-          usuarioLogueado: false
-      });
+        res.render('login');
       },
     register: function(req, res) {
-        res.render('register', {
-          usuarioLogueado: false
-      });
+        res.render('register');
       },
     profile: function(req, res) {
-      let id = req.params.id
+      let id = req.session.user.id // ponerlo asi en todos lados donde aparezca id
       db.usuarios.findByPK(id, {
         include: [{association:"usuarios_productos"}]
       })
@@ -28,7 +24,6 @@ const usersController = {
         res.render('profile',{
           // remeras : data.remeras,
           //como hago para ademas mandarle la info de las remeras
-          usuarioLogueado: true,
           user : data
         });
         })
@@ -37,11 +32,10 @@ const usersController = {
         })
       },
     edit: function(req, res) {
-      let id = req.params.id
+      let id = req.session.user.id
       db.usuarios.findByPK(id)
       .then(function(data){
         res.render('profile-edit', {
-          usuarioLogueado: true,
           user : data
       });
       })
@@ -88,7 +82,7 @@ const usersController = {
     },
 
     checkUser: function(req,res){
-      let {email, password} = req.body
+      let {email, password, recordarme} = req.body
 
       db.usuarios.findOne({
         where:{
@@ -100,7 +94,27 @@ const usersController = {
       .then(function(usuario){
         let checkPassword = bcrypt.compareSync(password, usuario.password)
         if (checkPassword){
-          res.redirect("/users/profile" + usuario.id)
+          req.session.user = {
+            id: usuario.id,
+            username: usuario.username,
+            email: usuario.email,
+          }
+          if(recordarme === 'on'){
+            res.cookie ('recordarme', 
+              {
+                id: usuario.id,
+                username: usuario.username,
+                email: usuario.email,
+
+              },
+              {
+                maxAge: 1000 * 15
+              }
+
+            )
+          }
+          res.redirect("/users/profile")
+          
         }
       })
       .catch(function(error){

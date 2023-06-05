@@ -16,14 +16,17 @@ const controlador = {
             // res.send(data)
             
             res.render('index', {
-                remeras: data,
-                usuarioLogueado: false
-
+                remeras: data
             })
         })        
         .catch(function(err){
             console.log(err)
         })
-}
+},
+
+    logout: function( req, res){
+        req.session.user = undefined
+        res.redirect('/')
+    }
 }
 module.exports = controlador

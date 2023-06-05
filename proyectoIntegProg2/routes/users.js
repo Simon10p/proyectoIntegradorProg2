@@ -12,7 +12,7 @@ router.post('/register', usersController.create)
 //chequiar esta ruta
 
 
-router.get('/profile/:id', usersController.profile)
+router.get('/profile/', usersController.profile)
 
 
 router.get('/edit/:id', usersController.edit)
