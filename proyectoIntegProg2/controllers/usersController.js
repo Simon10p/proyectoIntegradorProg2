@@ -5,6 +5,12 @@ let bcrypt = require("bcryptjs")
 
 const usersController = {
     login: function(req, res) {
+        if (req.session.user != undefined){
+          res.redirect('/')
+        } else {
+          res.render ('login')
+        }
+
         res.render('login');
       },
     register: function(req, res) {
@@ -61,24 +67,33 @@ const usersController = {
       let DNI = req.body.DNI
       let cumpleaños = req.body.cumpleaños
       let foto_perfil = req.body.foto_perfil
-
-      let passEncriptada = bcrypt.hashSync(password, 12)
-      db.users.create({
-        username,
-        email,
-        password: passEncriptada,
-        DNI,
-        cumpleaños,
-        foto_perfil
-      })
-      .then(function(response){
-        id = response.id
-        //aca entonces lo mando por el res redirect???
-        res.redirect("/users/profile" + id)
-      })
-      .catch(function(error){
-        console.log(error)
-      })
+      if (
+        (email.includes('@') && email.includes('.'))
+        (password.length > 6)
+        ){
+        let passEncriptada = bcrypt.hashSync(password, 12)
+        db.users.create({
+          username,
+          email,
+          password: passEncriptada,
+          DNI,
+          cumpleaños,
+          foto_perfil
+        })
+        .then(function(response){
+          id = response.id
+          //aca entonces lo mando por el res redirect???
+          res.redirect("/users/profile" + id) // hay que borrar todo los "+" y los que va despues?
+        })
+        .catch(function(error){
+          console.log(error)
+        })
+      } else{
+        let errors = {}
+        errors.message = "Los datos de registro presentan erorrers"
+        res.locals.errors = errors
+        res.render('register')
+      }
     },
 
     checkUser: function(req,res){

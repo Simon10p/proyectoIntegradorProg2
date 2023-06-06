@@ -21,6 +21,9 @@
 				<input name = "foto_perfil" type="url"  placeholder="Foto de perfil">
 				<button type="submit">Registrarte</button>
 			</form>
+			<%if (locals.errors){%>
+			<h2><%= errors.message%></h2>
+			<% } %>
 
 </main>
 <%- include('./partials/footer') %>
