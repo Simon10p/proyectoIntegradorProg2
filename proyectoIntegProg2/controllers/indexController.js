@@ -6,7 +6,6 @@ const op = db.Sequelize.Op
 const controlador = {
     index: function(req,res){
         db.productos.findAll({   
-            raw: true,
             nest: true,
             include: [{ association: "productos_comentarios"}, {association:"productos_usuarios"}]
 

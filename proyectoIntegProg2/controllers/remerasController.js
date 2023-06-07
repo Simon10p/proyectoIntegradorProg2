@@ -3,14 +3,14 @@ const Op = db.Sequelize.Op
 
 const remerasController ={
     product: function(req,res){
-        let id = req.session.user.id
+        //let id = req.session.user.id
+        let id = req.params.id
         db.productos.findByPk(id, {
-            raw: true,
+      
             nest: true,
             include: [{association:"productos_usuarios"},{association: "productos_comentarios"}],
         })
         .then(function(data){
-            res.send(data)
             res.render('product',{
                 producto: data
             })
@@ -73,10 +73,3 @@ const remerasController ={
 
 module.exports = remerasController
 
-let datos ={
-    "id":1,
-    "usuario_id":null,
-    "nombre_producto":"Argentina 1986",
-    "descripcion":"Camiseta vintage de fútbol de Argentina, ganador de la Copa del Mundo 1986 en México, Argentina-Alemania 3-2","img_url":"/images/argentina-1986-1-1.jpeg","createdAt":"2023-05-29T18:14:21.000Z","updatedAt":"2023-05-29T18:14:21.000Z",
-    "productos_usuarios":
-    {"id":null,"username":null,"email":null,"password":null,"foto_perfil":null,"DNI":null,"cumpleaños":null},"productos_comentarios":{"id":1,"usuario_id":1,"comentario":"QUIERO SER CAMPEON MUNDIAAAAAL","createdAt":"2023-05-29T18:14:21.000Z","updatedAt":"2023-05-29T18:14:21.000Z","producto_id":1}}

@@ -63,7 +63,7 @@ const usersController = {
       let foto_perfil = req.body.foto_perfil
 
       let passEncriptada = bcrypt.hashSync(password, 12)
-      db.users.create({
+      db.usuarios.create({
         username,
         email,
         password: passEncriptada,
@@ -72,9 +72,10 @@ const usersController = {
         foto_perfil
       })
       .then(function(response){
-        id = response.id
+       // id = response.id
         //aca entonces lo mando por el res redirect???
-        res.redirect("/users/profile" + id)
+       // res.redirect("/users/profile" + id)
+       res.redirect('/users/login')
       })
       .catch(function(error){
         console.log(error)
@@ -88,7 +89,6 @@ const usersController = {
         where:{
           email
         },
-        raw:true
 
       })
       .then(function(usuario){
@@ -113,7 +113,7 @@ const usersController = {
 
             )
           }
-          res.redirect("/users/profile")
+          res.redirect("/")
           
         }
       })

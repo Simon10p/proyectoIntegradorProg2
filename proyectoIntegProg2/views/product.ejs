@@ -24,13 +24,13 @@
 					</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						<%for(let i = 0; i < producto.producto_comentarios.length; i++){%>
+						<%for(let i = 0; i < producto.productos_comentarios.length; i++){%>
 						<article>
 							<img src="https://via.placeholder.com/35" alt="">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="/users/profile"> <%= comentarios[i].usuario_id %> </a> </strong>
-								<%= comentarios[i].comentario %> </p>
+								<strong> <a href="/users/profile"> hola </a> </strong>
+								<%= producto.productos_comentarios[i].comentario %> </p>
 							</div>
 						</article>
 						<%}%>

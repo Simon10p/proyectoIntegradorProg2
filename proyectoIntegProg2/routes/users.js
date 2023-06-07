@@ -7,12 +7,13 @@ router.get('/login', usersController.login )
 router.post("/login", usersController.checkUser)
 
 
+
 router.get('/register', usersController.register)
 router.post('/register', usersController.create)
 //chequiar esta ruta
 
 
-router.get('/profile/', usersController.profile)
+router.get('/profile', usersController.profile)
 
 
 router.get('/edit/:id', usersController.edit)
