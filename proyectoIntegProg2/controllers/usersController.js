@@ -1,15 +1,15 @@
 const db = require("../database/models/index")
-const op = db.Sequelize.op
+const op = db.Sequelize.Op
 let bcrypt = require("bcryptjs")
 
 
 const usersController = {
     login: function(req, res) {
-        if (req.session.user != undefined){
-          res.redirect('/')
-        } else {
+        // if (req.session.user != undefined){
+        //   res.redirect('/')
+        // } else {
           res.render ('login')
-        }
+        // }
 
         res.render('login');
       },
@@ -67,12 +67,10 @@ const usersController = {
       let DNI = req.body.DNI
       let cumpleaños = req.body.cumpleaños
       let foto_perfil = req.body.foto_perfil
-      if (
-        (email.includes('@') && email.includes('.'))
-        (password.length > 6)
-        ){
+      if ((email.includes('@')) && (email.includes('.')) && (password.length > 6))
+      {
         let passEncriptada = bcrypt.hashSync(password, 12)
-        db.users.create({
+        db.usuarios.create({
           username,
           email,
           password: passEncriptada,
@@ -103,7 +101,6 @@ const usersController = {
         where:{
           email
         },
-        raw:true
 
       })
       .then(function(usuario){
@@ -128,7 +125,7 @@ const usersController = {
 
             )
           }
-          res.redirect("/users/profile")
+          res.redirect("/")
           
         }
       })

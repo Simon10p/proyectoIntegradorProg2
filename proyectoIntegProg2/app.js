@@ -31,15 +31,16 @@ app.use(session({
 
 app.use(function(req,res, next){
   req.session.user ={
+    id: '',
     username: '',
     email: '',
   }
-  if(req.session.user!== undefined){
-    res.locals.usuarioLogueado = true
+  if(req.session.user !== undefined){
+    res.locals.usuarioLogueado = false
     res.locals.user = req.session.user
   }
   else{
-    res.locals.usuarioLogueado = false
+    res.locals.usuarioLogueado = true
   }
   return next()
 })
