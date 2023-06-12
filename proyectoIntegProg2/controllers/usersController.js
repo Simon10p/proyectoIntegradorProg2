@@ -18,7 +18,7 @@ const usersController = {
       },
     profile: function(req, res) {
       let id = req.session.user.id // ponerlo asi en todos lados donde aparezca id
-      db.usuarios.findByPK(id, {
+      db.usuarios.findByPk(id, {
         include: [{association:"usuarios_productos"}]
       })
         // raw:true,
@@ -28,8 +28,6 @@ const usersController = {
       .then(function(data){
         console.log(data)
         res.render('profile',{
-          // remeras : data.remeras,
-          //como hago para ademas mandarle la info de las remeras
           user : data
         });
         })
@@ -39,7 +37,7 @@ const usersController = {
       },
     edit: function(req, res) {
       let id = req.session.user.id
-      db.usuarios.findByPK(id)
+      db.usuarios.findByPk(id)
       .then(function(data){
         res.render('profile-edit', {
           user : data
@@ -81,7 +79,7 @@ const usersController = {
         .then(function(response){
           let id = req.session.user.id 
           //aca entonces lo mando por el res redirect???
-          res.redirect("/users/profile") // hay que borrar todo los "+" y los que va despues?
+          res.redirect("/users/login") // hay que borrar todo los "+" y los que va despues?
         })
         .catch(function(error){
           console.log(error)

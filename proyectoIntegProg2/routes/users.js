@@ -16,8 +16,8 @@ router.post('/register', usersController.create)
 router.get('/profile', usersController.profile)
 
 
-router.get('/edit/:id', usersController.edit)
-router.post("/edit/:id", usersController.updateProfile)
+router.get('/edit', usersController.edit)
+router.post("/edit", usersController.updateProfile)
 
 
 
