@@ -51,10 +51,12 @@ const remerasController ={
         db.productos.findAll({
             raw:true,
             where:{
-                nombre_producto:{
-                     [Op.like] : `%${userSearch}%`
-                }
+                [Op.or]: [
+                    { nombre_producto:{ [Op.like] : `%${userSearch}%`}},
+                    { descripcion:{ [Op.like] : `%${userSearch}%`}}
+                ]
             }
+                
         })
         .then(function(data){
             let resultadosBusqueda 

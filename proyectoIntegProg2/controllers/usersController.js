@@ -79,9 +79,9 @@ const usersController = {
           foto_perfil
         })
         .then(function(response){
-          id = response.id
+          let id = req.session.user.id 
           //aca entonces lo mando por el res redirect???
-          res.redirect("/users/profile" + id) // hay que borrar todo los "+" y los que va despues?
+          res.redirect("/users/profile") // hay que borrar todo los "+" y los que va despues?
         })
         .catch(function(error){
           console.log(error)
