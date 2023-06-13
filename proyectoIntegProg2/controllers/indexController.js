@@ -7,12 +7,11 @@ const controlador = {
     index: function(req,res){
         db.productos.findAll({   
             nest: true,
-            include: [{ association: "productos_comentarios"}, {association:"productos_usuarios"}]
+            include: {association:"productos_usuarios"}
 
         })
         .then(function(data){
             console.log(data);
-            
             res.render('index', {
                 remeras: data
             })
