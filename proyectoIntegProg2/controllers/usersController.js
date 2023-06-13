@@ -21,10 +21,6 @@ const usersController = {
       db.usuarios.findByPk(id, {
         include: [{association:"usuarios_productos"}]
       })
-        // raw:true,
-        // nested: true,
-        // include: [{association:"usuarios_productos"}]
-        //no c si va esto adentro del fin by pk
       .then(function(data){
         console.log(data)
         res.render('profile',{
@@ -143,12 +139,10 @@ const usersController = {
           cumpleaños
       },
       {
-          where:{
-              id
-          }
+          where:{id}
       })
       .then(function(response){
-          res.redirect("/users/profile" + id)
+          response.redirect("/users/profile" + id)
       })
       .catch(function(error){
         console.log(error)
