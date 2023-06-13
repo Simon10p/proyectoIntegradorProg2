@@ -12,7 +12,6 @@ const controlador = {
         })
         .then(function(data){
             console.log(data);
-            // res.send(data)
             
             res.render('index', {
                 remeras: data

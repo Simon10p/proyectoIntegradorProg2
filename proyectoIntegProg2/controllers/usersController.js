@@ -26,6 +26,7 @@ const usersController = {
         // include: [{association:"usuarios_productos"}]
         //no c si va esto adentro del fin by pk
       .then(function(data){
+        
         console.log(data)
         res.render('profile',{
           user : data
@@ -77,7 +78,6 @@ const usersController = {
           foto_perfil
         })
         .then(function(response){
-          let id = req.session.user.id 
           //aca entonces lo mando por el res redirect???
           res.redirect("/users/login") // hay que borrar todo los "+" y los que va despues?
         })

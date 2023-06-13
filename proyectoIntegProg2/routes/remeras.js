@@ -5,7 +5,7 @@ const remerasController = require('../controllers/remerasController')
 router.get('/product/:id', remerasController.product)
 router.get("/results", remerasController.search)
 router.get("/add", remerasController.add)
-router.post("/add/load", remerasController.load)
+router.post("/load", remerasController.load)
 
 
 module.exports = router

@@ -24,12 +24,11 @@ const remerasController ={
     add: function(req,res){
         if(req.session.user != undefined){ //add esta solo dispobile para la gente que este logueada (hacer los mismo para las otras funciones que reaquieran estar logueado)
         res.render("product-add", {
-            user : data.usuario
+            user : req.session.user
         })
         }else{
             res.redirect('/users/login')
         }
-
     },
     load:
     function(req, res){
@@ -37,7 +36,7 @@ const remerasController ={
             img_url: req.body.img_url,
             nombre_producto: req.body.nombre_producto,
             descripcion: req.body.descripcion,
-            usuario_id: req.body.usuario_id
+            usuario_id: req.session.user.id
         })
         .then(function(data){
             res.redirect("/users/profile")
