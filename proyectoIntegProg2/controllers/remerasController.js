@@ -32,11 +32,11 @@ const remerasController ={
                 res.render("product-edit", {
                     producto : data  
             })
+
         })
         }else{
             res.redirect('/users/login')
         }
-
     },
     updateProduct: function(req, res){
         let id = req.params.id
@@ -63,7 +63,7 @@ const remerasController ={
             img_url: req.body.img_url,
             nombre_producto: req.body.nombre_producto,
             descripcion: req.body.descripcion,
-            usuario_id: req.body.usuario_id
+            usuario_id: req.session.user.id
         })
         .then(function(data){
             res.redirect("/users/profile")

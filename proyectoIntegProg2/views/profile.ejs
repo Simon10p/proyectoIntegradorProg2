@@ -49,14 +49,13 @@
 			<% for(let i=0; i< user.usuarios_productos.length; i++){%>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="/remeras/product">
+					<a href="/remeras/product/<%- user.usuarios_productos[i].id %>">
 						<figure class="product-box_image">
-							<img src="<%= user.usuarios_producto[i].img_url%>" alt=<%= remeras[i].nombre%>>
+							<img src="<%= user.usuarios_productos[i].img_url%>" alt=<%= user.usuarios_productos[i].nombre_producto%>>
 						</figure>
 						<article class="product-box_data">
-							<h2><%= user.usuarios_producto[i].nombre_producto %></h2>
-							<p><%= user.usuarios_producto[i].descripcion %></p>
-							<p>Comentarios: <%= user.usuarios_producto[i].comentarios %></p>
+							<h2><%= user.usuarios_productos[i].nombre_producto %></h2>
+							<p><%= user.usuarios_productos[i].descripcion %></p>
 						</article>
 					</a>
 				</section>
