@@ -17,6 +17,7 @@ const usersController = {
         res.render('register');
       },
     profile: function(req, res) {
+      
       let id = req.session.user.id // ponerlo asi en todos lados donde aparezca id
       db.usuarios.findByPk(id, {
         include: [{association:"usuarios_productos"}]
@@ -102,6 +103,7 @@ const usersController = {
 
       })
       .then(function(usuario){
+        if(usuario != null){
         let checkPassword = bcrypt.compareSync(password, usuario.password)
         if (checkPassword){
           req.session.user = {
@@ -125,6 +127,18 @@ const usersController = {
           }
           res.redirect("/")
           
+        }
+        else{
+        let errors = {}
+        errors.message = "La contraseña ingresada es incorrecta, vuelva a intentar"
+        res.locals.errors = errors
+        }
+        }
+        else{
+        let errors = {}
+        errors.message = "El usuario ingresado no existe"
+        res.locals.errors = errors
+        res.render('register')
         }
       })
       .catch(function(error){

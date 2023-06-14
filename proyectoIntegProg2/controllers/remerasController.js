@@ -54,10 +54,19 @@ const remerasController ={
                     { nombre_producto:{ [Op.like] : `%${userSearch}%`}},
                     { descripcion:{ [Op.like] : `%${userSearch}%`}}
                 ]
-            }
+                
+                
+            },
+            order: [
+                ['createdAt', 'DESC']
+            ],
+            include:  {association:"productos_usuarios"}
+
+
                 
         })
         .then(function(data){
+            res.send(data)
             let resultadosBusqueda 
             if (data.length > 0 ){
                 resultadosBusqueda = true
@@ -74,6 +83,21 @@ const remerasController ={
         .catch(function(error){
             console.log(error)
         })
+    },
+    addComment: function(req,res){
+    
+        if(req.session.user){
+        db.comentarios.create({
+            producto_id: req.params.id,
+            usuario_id: req.session.user.id,
+            comentario: req.body.comentario
+        })
+            return res.redirect(`/remeras/product/${req.params.id}`)
+          }
+        else{
+            res.redirect('/users/login')
+        }
+       
     }
 }
 

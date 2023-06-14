@@ -29,13 +29,13 @@
 							<img src="https://via.placeholder.com/35" alt="">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="/users/profile"> hola </a> </strong>
+							<strong> <a href='/users/profile<%= producto.productos_comentarios[i].usuario_id%>' > <%= producto.productos_comentarios[i].usuario_id%> </a> </strong>
 								<%= producto.productos_comentarios[i].comentario %> </p>
 							</div>
 						</article>
 						<%}%>
 					</section>
-					<form class="form" action="/remeras/product"  method="GET">
+					<form class="form" action="/remeras/product/<%-producto.id%>"  method="post">
 						<input name="comentario" class="form-input" type="text" value="" placeholder="Agregar comentario">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 					</form>
