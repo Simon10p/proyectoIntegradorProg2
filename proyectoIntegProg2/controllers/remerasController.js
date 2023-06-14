@@ -21,14 +21,41 @@ const remerasController ={
 
     },
 
-    add: function(req,res){
+    edit: function(req,res){
         if(req.session.user != undefined){ //add esta solo dispobile para la gente que este logueada (hacer los mismo para las otras funciones que reaquieran estar logueado)
-        res.render("product-add", {
-            user : req.session.user
+            let id = req.params.id 
+            db.productos.findByPk(id, {
+                nest: true,
+                include:{association:"productos_usuarios"}
+            })
+            .then(function(data){ 
+                res.render("product-edit", {
+                    producto : data  
+            })
+
         })
         }else{
             res.redirect('/users/login')
         }
+    },
+    updateProduct: function(req, res){
+        let id = req.params.id
+        let {img_url, nombre_producto, descripcion, fechaCarga} = req.body
+         db.productos.update({
+             img_url,
+             nombre_producto,
+             descripcion,
+             fechaCarga
+         },
+         {
+            where:{id}
+        })
+        .then(function(res){
+            res.redirect(`/remeras/product/${id}`)
+        })
+        .catch(function(error){
+            console.log(error)
+        })
     },
     load:
     function(req, res){

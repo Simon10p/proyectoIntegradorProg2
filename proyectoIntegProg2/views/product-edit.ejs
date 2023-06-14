@@ -1,0 +1,25 @@
+<%- include('./partials/head') %>
+
+	<!-- Header -->
+<%- include('./partials/header') %>
+	<!-- /Header -->
+
+	<!-- Novedades -->
+    <main>
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Editar product</h2>
+			</div>
+			<!-- Show the "ultimos" products -->
+			<form action="/users/profile/<%= producto.usuario_id %>" method="POST" id="registerForm">
+				<input type="text" name="nombre_producto" value="<%= producto.nombre_producto %>">
+				<input type="text" name="descripcion" value="<%= producto.descripcion %>">
+				<input type="url" name="img_url" value="<%= producto.img_url %>">
+				<button type="submit">Confrimar cambios</button>
+			</form>
+
+<!-- "aca tiene que ir la informacion que viene desde el register" -->
+
+    </main>
+<%- include('./partials/footer') %>

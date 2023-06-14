@@ -10,7 +10,7 @@
 			<!-- <h2 class="products-title">Camiseta Austria-1938</h2>  -->
 			<h2 class="products-title"> <%= producto.nombre_producto%></h2>
 			<p class="product-detail-description"<%= producto.descripcion%>>
-				<a href="/remeras/add">Editar</a>
+				<a href="/remeras/edit/<%- producto.id %>">Editar</a>
 			</p>
 		</div>
 		<div class="product-detail">

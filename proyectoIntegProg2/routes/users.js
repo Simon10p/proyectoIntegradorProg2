@@ -20,5 +20,4 @@ router.get('/edit', usersController.edit)
 router.post("/edit", usersController.updateProfile)
 
 
-
 module.exports = router;

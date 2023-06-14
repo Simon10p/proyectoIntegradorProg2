@@ -1,1 +1,7 @@
+<<<<<<< HEAD
+node_modules
+.DS_Store
+/database/config.js
+=======
 */node_modules
+>>>>>>> 312ec9c80f2e3763ab766329cf08bb6006b7e311
