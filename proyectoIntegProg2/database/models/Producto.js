@@ -23,6 +23,9 @@ module.exports = function (sequelize,DataTypes){
         img_url: {
             type: DataTypes.STRING,
             allowNull: true
+        },
+        createdAt:{
+            type: DataTypes.DATE
         }
     }
     let config= {

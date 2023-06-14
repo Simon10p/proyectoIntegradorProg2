@@ -20,27 +20,29 @@ const usersController = {
       let idPerfil
       if(req.params.id){
         idPerfil = req.params.id
-      }
-      else{
+      } else {
         idPerfil = req.session.user.id
       }
-
+      console.log(idPerfil)
+      console.log('Este es el IdPerfil')
       //let idLogueado = req.session.user.id
       db.usuarios.findByPk(idPerfil, {
-        order: [[{model: "usuarios_productos"},'createdAt', 'DESC']],
+        order: [["usuarios_productos",'createdAt', 'DESC']],
       // los productos que traemos con usuarios_productos tienen que tener el orden DESC
         include: [{association:"usuarios_productos"}]
         
       })
       .then(function(data){
-        console.log(data)
         let perfilUsuario
-        if(idPerfil === req.session.user.id){
-            perfilUsuario = true
-          }
-          else{
-            perfilUsuario = false
-          }
+        if(req.ression.user){
+          if(idPerfil === req.session.user.id){
+              perfilUsuario = true
+            } else{
+              perfilUsuario = false
+            }
+          }else{
+              perfilUsuario = false
+            }
         res.render('profile',{
             user : data,
             perfilUsuario

@@ -20,7 +20,7 @@ const remerasController ={
         })
 
     },
-
+    
     edit: function(req,res){
         if(req.session.user != undefined){ //add esta solo dispobile para la gente que este logueada (hacer los mismo para las otras funciones que reaquieran estar logueado)
             let id = req.params.id 
