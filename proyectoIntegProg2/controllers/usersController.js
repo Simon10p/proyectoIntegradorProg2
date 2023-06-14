@@ -27,9 +27,7 @@ const usersController = {
 
       //let idLogueado = req.session.user.id
       db.usuarios.findByPk(idPerfil, {
-      //   order: [
-      //     ['createdAt', 'DESC']
-      // ],
+        order: [[{model: "usuarios_productos"},'createdAt', 'DESC']],
       // los productos que traemos con usuarios_productos tienen que tener el orden DESC
         include: [{association:"usuarios_productos"}]
         

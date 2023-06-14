@@ -8,7 +8,7 @@ const remerasController ={
         db.productos.findByPk(id, {
       
             nest: true,
-            include: [{association:"productos_usuarios"},{association: "productos_comentarios"}],
+            include: [{association:"productos_usuarios"},{association: "productos_comentarios", include: {association: "comentarios_usuarios"}}],
         })
         .then(function(data){
             res.render('product',{
