@@ -7,6 +7,9 @@ const controlador = {
     index: function(req,res){
         db.productos.findAll({   
             nest: true,
+            order: [
+                ['createdAt', 'DESC']
+            ],
             include: {association:"productos_usuarios"}
         })
         .then(function(data){

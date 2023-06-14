@@ -17,7 +17,14 @@ const usersController = {
         res.render('register');
       },
     profile: function(req, res) {
-      let idPerfil = req.params.id
+      let idPerfil
+      if(req.params.id){
+        idPerfil = req.params.id
+      }
+      else{
+        idPerfil = req.session.user.id
+      }
+
       //let idLogueado = req.session.user.id
       db.usuarios.findByPk(idPerfil, {
       //   order: [
@@ -29,6 +36,7 @@ const usersController = {
       })
       .then(function(data){
         console.log(data)
+        let perfilUsuario
         if(idPerfil === req.session.user.id){
             perfilUsuario = true
           }
