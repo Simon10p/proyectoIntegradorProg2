@@ -17,17 +17,25 @@ const usersController = {
         res.render('register');
       },
     profile: function(req, res) {
-      
-      let id = req.session.user.id // ponerlo asi en todos lados donde aparezca id
+      //let id = req.session.user.id // ponerlo asi en todos lados donde aparezca id
+      let id = req.params.id
+      let idLogueado = req.session.user.id
       db.usuarios.findByPk(id, {
+      //   order: [
+      //     ['createdAt', 'DESC']
+      // ],
+      // los productos que traemos con usuarios_productos tienen que tener el orden DESC
         include: [{association:"usuarios_productos"}]
+        
       })
       .then(function(data){
-        
         console.log(data)
-        res.render('profile',{
-          user : data
-        });
+        if(id == idLogueado){
+          res.render('profile',{
+            user : data,
+            perfilUsuario : true
+          });
+        }
         })
         .catch(function(error){
           console.log(error)
