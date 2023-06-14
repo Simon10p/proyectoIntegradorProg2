@@ -93,7 +93,6 @@ const remerasController ={
                 
         })
         .then(function(data){
-            res.send(data)
             let resultadosBusqueda 
             if (data.length > 0 ){
                 resultadosBusqueda = true
