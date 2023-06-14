@@ -17,10 +17,9 @@ const usersController = {
         res.render('register');
       },
     profile: function(req, res) {
-      //let id = req.session.user.id // ponerlo asi en todos lados donde aparezca id
-      let id = req.params.id
-      let idLogueado = req.session.user.id
-      db.usuarios.findByPk(id, {
+      let idPerfil = req.params.id
+      //let idLogueado = req.session.user.id
+      db.usuarios.findByPk(idPerfil, {
       //   order: [
       //     ['createdAt', 'DESC']
       // ],
@@ -30,12 +29,16 @@ const usersController = {
       })
       .then(function(data){
         console.log(data)
-        if(id == idLogueado){
-          res.render('profile',{
+        if(idPerfil === req.session.user.id){
+            perfilUsuario = true
+          }
+          else{
+            perfilUsuario = false
+          }
+        res.render('profile',{
             user : data,
-            perfilUsuario : true
-          });
-        }
+            perfilUsuario
+        })
         })
         .catch(function(error){
           console.log(error)
@@ -55,8 +58,7 @@ const usersController = {
     },
 
     header: function(req, res){
-      //falta capturar el id que calculo que es con sessions.
-      // para mandar la info de el usuario que se esta logueando y mostrarlo en el Header. 
+      let id = req.session.user.id
       db.usuarios.findByPK(id)
       .then(function(data){
         res.send("header",{
