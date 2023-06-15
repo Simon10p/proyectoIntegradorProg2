@@ -14,6 +14,7 @@ router.post("/product/:id", remerasController.updateProduct)
 
 router.get("/edit/:id", remerasController.edit)
 
+router.post("/delete/:id", remerasController.delete)
 
 router.get("/add", remerasController.add)
 router.post("/load", remerasController.load)

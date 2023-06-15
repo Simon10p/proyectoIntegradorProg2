@@ -11,6 +11,7 @@
 			<h2 class="products-title"> <%= producto.nombre_producto%></h2>
 			<p class="product-detail-description"<%= producto.descripcion%>>
 				<a href="/remeras/edit/<%- producto.id %>">Editar</a>
+				<a href="/remeras/delete/<%- producto.id %>">Eliminar producto</a>
 			</p>
 		</div>
 		<div class="product-detail">
@@ -29,7 +30,7 @@
 							<img src="https://via.placeholder.com/35" alt="">
 							<div class="data">
 								<p class="user">
-							<strong> <a href='/users/profile/<%= producto.productos_comentarios[i].comentarios_usuario.id%>' > <%= producto.productos_comentarios[i].comentarios_usuarios.username%> </a> </strong>
+							<strong> <a href='/users/profile/<%= producto.productos_comentarios[i].usuario_id%>' > <%= producto.productos_comentarios[i].comentarios_usuarios.username%> </a> </strong>
 								<%= producto.productos_comentarios[i].comentario %> </p>
 							</div>
 						</article>

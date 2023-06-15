@@ -5,16 +5,15 @@
 
 	<!-- Datos del usuario -->
 	<main>
-	<% if(usuarioLogueado) {%>
 		<section class="info-usuario container products-wrapper">
 			<div class="row">
 				<div class="img-container offset-3 col-2">
-					<img src= <%= user.pf %> alt="foto de perfil" class="foto-perfil">
+					<img src= <%= usuario.pf %> alt="foto de perfil" class="foto-perfil">
 					<!-- falta un boton de editar perfil?-->
 				</div>
 				<div class="data-container col-6">
 					<div class="d-flex align-items-center ">
-						<h1 class="main-title"><%= user.usuario %>
+						<h1 class="main-title"><%= usuario.usuario %>
 							<a href="/users/edit">
 								<i class="fas fa-cog"></i>
 							</a>
@@ -24,18 +23,20 @@
 					<div>
 						<ul class="">
 							<li>
-								<%= user.email %>
+								<%= usuario.email %>
 							</li>
 							<br>
-							<li>8 productos</li>
+							<li><%= usuario.usuarios_productos.length %></li>
 							<li>200 seguidores</li>
-							<li>300 comentarios</li>
+							<li><%= usuario.usuarios_comentarios.length %></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 			<div class="col-12">
+				<% if(perfil_logueado) {%>
 				<a href="/users/edit/">Editar mi perfil</a> 
+				<%	} %>
 				<!-- a las rutas sacarles el parametro -->
 			</div>
 		</section>
@@ -44,74 +45,23 @@
 		<div class="container products-wrapper">
 			<div class="row">
 				<div class="col-12">
-					<h2 class="products-title">Mis productos</h2>
+					<% if(perfil_logueado) {%>
+					<h2 class="products-title">Mis publicaciones:</h2>
+					<% }else{ %>
+						<h2 class="products-title">Productos publicados:</h2>
+				<%	} %>
 				</div>
 				<!-- Show mis productos -->
-				<% for(let i=0; i< user.usuarios_productos.length; i++){%>
+				<% for(let i=0; i< usuario.usuarios_productos.length; i++){%>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/remeras/product/<%- user.usuarios_productos[i].id %>">
+						<a href="/remeras/product/<%- usuario.usuarios_productos[i].id %>">
 							<figure class="product-box_image">
-								<img src="<%= user.usuarios_productos[i].img_url%>" alt=<%= user.usuarios_productos[i].nombre_producto%>>
+								<img src="<%= usuario.usuarios_productos[i].img_url%>" alt=<%= usuario.usuarios_productos[i].nombre_producto%>>
 							</figure>
 							<article class="product-box_data">
-								<h2><%= user.usuarios_productos[i].nombre_producto %></h2>
-								<p><%= user.usuarios_productos[i].descripcion %></p>
-							</article>
-						</a>
-					</section>
-				</div>
-				<%}%>
-			</div>
-		</div>
-	<%}else{%>
-		<section class="info-usuario container products-wrapper">
-			<div class="row">
-				<div class="img-container offset-3 col-2">
-					<img src= <%= user.pf %> alt="foto de perfil" class="foto-perfil">
-					<!-- falta un boton de editar perfil?-->
-				</div>
-				<div class="data-container col-6">
-					<div class="d-flex align-items-center ">
-						<h1 class="main-title"><%= user.usuario %>
-							<a href="/users/edit">
-								<i class="fas fa-cog"></i>
-							</a>
-						</h1>
-						<a class="btn mt-3 ml-4" href="">SEGUIR</a>
-					</div>
-					<div>
-						<ul class="">
-							<li>
-								<%= user.email %>
-							</li>
-							<br>
-							<li>8 productos</li>
-							<li>200 seguidores</li>
-							<li>300 comentarios</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- /Datos del usuario -->
-		<!-- Mis productos -->
-		<div class="container products-wrapper">
-			<div class="row">
-				<div class="col-12">
-					<h2 class="products-title">Mis productos</h2>
-				</div>
-				<!-- Show mis productos -->
-				<% for(let i=0; i< user.usuarios_productos.length; i++){%>
-				<div class="col-12 col-sm-6 col-lg-3">
-					<section class="product-box">
-						<a href="/remeras/product/<%- user.usuarios_productos[i].id %>">
-							<figure class="product-box_image">
-								<img src="<%= user.usuarios_productos[i].img_url%>" alt=<%= user.usuarios_productos[i].nombre_producto%>>
-							</figure>
-							<article class="product-box_data">
-								<h2><%= user.usuarios_productos[i].nombre_producto %></h2>
-								<p><%= user.usuarios_productos[i].descripcion %></p>
+								<h2><%= usuario.usuarios_productos[i].nombre_producto %></h2>
+								<p><%= usuario.usuarios_productos[i].descripcion %></p>
 							</article>
 						</a>
 					</section>
@@ -120,11 +70,6 @@
 			</div>
 		</div>
 
-
-
-	<%}%>
-
-	
 	<!-- /Mis productos -->
 
 </main>
