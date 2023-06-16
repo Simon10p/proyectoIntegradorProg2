@@ -34,20 +34,20 @@
                 </ul>
     
                 <ul class="right-navbar">
-                    <li><p>
-                        Hola
-                        <a href="/users/profile"> <%= user.username%></a>
-                        </h1>
-                         <i class="fas fa-user"></i>
-                        
-                    </p>
-                        <li>
-                            <form action="/" method="POST">
-                                <button class="logout" type="submit">
-                                    Cerrar sesión <i class="fas fa-sign-in-alt"></i>
-                                </button>
-                            </form>
-                        </li>
+                    <li>
+                       <p> Hola<a href="/users/profile"> <%= user.username%>  </a> </p>   
+                    </li>
+                    <li>
+                        <i class="fas fa-user"></i>
+                    </li>
+                    <li>
+                        <form action="/" method="POST">
+                            <button class="logout" type="submit">
+                                Cerrar sesión <i class="fas fa-sign-in-alt"></i>
+                            </button>
+                        </form>
+                    </li>
+
                 </ul>
             </nav>
         </div>

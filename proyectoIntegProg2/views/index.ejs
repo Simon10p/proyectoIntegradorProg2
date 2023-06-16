@@ -24,9 +24,9 @@
 							<img src=<%= remeras[i].img_url%> alt=<%= remeras[i].nombre%>>
 						</figure>
 						<article class="product-box_data">
-							<h2><%= remeras[i].nombre%></h2>
+							<h2><%= remeras[i].nombre_producto%></h2>
 							<p><%= remeras[i].descripcion%></p>
-							<p>Publicado por <%=remeras[i].productos_usuarios.username %></p>
+							<p>Publicado por <a href="/users/profile/<%=remeras[i].productos_usuarios.id %>"><%=remeras[i].productos_usuarios.username %></a></p>
 						</article>
 					</a>
 			</section>

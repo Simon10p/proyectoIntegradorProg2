@@ -9,10 +9,6 @@
 		<div class="d-flex align-items-center">
 			<!-- <h2 class="products-title">Camiseta Austria-1938</h2>  -->
 			<h2 class="products-title"> <%= producto.nombre_producto%></h2>
-			<p class="product-detail-description"<%= producto.descripcion%>>
-				<a href="/remeras/edit/<%- producto.id %>">Editar</a>
-				<a href="/remeras/delete/<%- producto.id %>">Eliminar producto</a>
-			</p>
 		</div>
 		<div class="product-detail">
 			<div class="row">
@@ -41,6 +37,12 @@
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 					</form>
 					<hr>
+					<p class="product-detail-options"<%= producto.descripcion%>>
+						<a href="/remeras/edit/<%- producto.id %>">Editar</a>
+						<br>
+						<br>
+						<a href="/remeras/delete/<%- producto.id %>">Eliminar producto</a>
+					</p>
 				</div>
 			</div>
 		</div>

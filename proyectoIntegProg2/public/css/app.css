@@ -64,6 +64,15 @@ hr {
   border-bottom: solid 1px var(--light-gray);
 }
 /*====== Register ======*/
+
+.register-title {
+  font-size: 3em;
+  font-weight: 400;
+  color: black;
+  margin-left: -1%;
+  font-family :'Times New Roman', Times, serif;
+ 
+}
 form {
   display: flex;
   flex-direction: column;
@@ -226,7 +235,7 @@ button:hover {
 }
 
 .products-title {
-  font-size: 2.4em;
+  font-size: 3em;
   font-weight: 400;
   color: black;
   margin-left: 39%;
@@ -242,6 +251,7 @@ button:hover {
   margin: 20px 0;
   display: flex;
   width: 100%;
+  flex-direction: column;
 }
 
 .product-box a {
@@ -390,7 +400,12 @@ button:hover {
   padding: 15px 15px 15px 40px;
   font-size: 1.8em;
   line-height: 1.5;
+}
 
+.product-detail-options {
+  padding: 15px 15px 15px 15px;
+  font-size: 1.8em;
+  line-height: 1.5;
 }
 
 .product-detail-price {
