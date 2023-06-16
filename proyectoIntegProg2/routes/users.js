@@ -14,10 +14,11 @@ router.post('/register', usersController.create)
 
 
 router.get('/profile/:id?', usersController.profile)
+router.post("/profile/:id?", usersController.updateProfile)
 
 
 router.get('/edit', usersController.edit)
-router.post("/edit", usersController.updateProfile)
+
 
 
 module.exports = router;

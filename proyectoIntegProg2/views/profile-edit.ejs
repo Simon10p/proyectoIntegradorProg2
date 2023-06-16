@@ -12,13 +12,13 @@
 				<h2 class="register-title">Editar mi perfil</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<form action="/users/edit/<%= user.id %>" method="POST" id="registerForm">
-				<input type="text" name="email" value="<%= user.email %>" >
-				<input type="text" name="username" value="<%= user.username %>">
-				<input type="password" name="password" value="<%= user.password %>" >
-				<input type="number" name="DNI" value="<%= user.DNI  %>">
-				<input type="date" name="cumpleaños" value="<%= user.cumpleaños %>" >
-				<input type="url" name="foto_perfil" value="<%= user.foto_perfil %>">
+			<form action="/users/profile/<%= usuario.id %>" method="POST" id="registerForm">
+				<input type="text" name="email" value="<%= usuario.email %>" >
+				<input type="text" name="username" value="<%= usuario.username %>">
+				<input type="password" name="password" placeholder="Ingrese su contraseña" >
+				<input type="number" name="DNI" value="<%= usuario.DNI  %>">
+				<input type="date" name="cumpleaños" value="<%= usuario.cumpleaños %>" >
+				<input type="text" name="foto_perfil" value="<%= usuario.foto_perfil %>">
 				<button type="submit">Confrimar cambios</button>
 			</form>
 

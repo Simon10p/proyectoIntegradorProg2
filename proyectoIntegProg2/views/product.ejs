@@ -32,17 +32,28 @@
 						</article>
 						<%}%>
 					</section>
-					<form class="form" action="/remeras/product/<%-producto.id%>"  method="post">
+					<% if(usuarioLogueado){ %>
+						<form class="form" action="/remeras/product/<%-producto.id%>"  method="post">
 						<input name="comentario" class="form-input" type="text" value="" placeholder="Agregar comentario">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 					</form>
+					<% }else{ %>
+					<h3>Debes <a href="/users/login"> iniciar sesion</a> para comentar</h3> 
+
+					<% } %>
+					
 					<hr>
-					<p class="product-detail-options"<%= producto.descripcion%>>
-						<a href="/remeras/edit/<%- producto.id %>">Editar</a>
+					<p class="product-detail-options" >
+						<% if(usuarioLogueado && producto.usuario_id == user.id){ %>
+					    <a href="/remeras/edit/<%= producto.id %>">Editar</a>
 						<br>
 						<br>
-						<a href="/remeras/delete/<%- producto.id %>">Eliminar producto</a>
-					</p>
+						<form action="/remeras/delete/<%= producto.id %>" method="POST">
+						<input type="submit" value="Eliminar producto">
+						
+						</form>
+						<%}%>
+						</p>
 				</div>
 			</div>
 		</div>

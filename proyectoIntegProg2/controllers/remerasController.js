@@ -3,17 +3,16 @@ const Op = db.Sequelize.Op
 
 const remerasController ={
     product: function(req,res){
-        //let id = req.session.user.id
         let id = req.params.id
         db.productos.findByPk(id, {
             nest: true,
+            order: [["productos_comentarios",'createdAt', 'DESC']],
             include: [{association:"productos_usuarios"},{association: "productos_comentarios", include: {association: "comentarios_usuarios"}}],
         })
         .then(function(data){
             // res.send(data)
-
             res.render('product',{
-                producto: data
+                producto: data,
             })
         })
         .catch(function(error){
@@ -129,10 +128,15 @@ res.render("product-add")
     },
     delete: function(req, res){
         let idProducto = req.params.id
-        db.productos.destroy({
-            where: {idProducto}
+        db.comentarios.destroy({
+            where: {producto_id: idProducto}
         })
-        res.redirect(`/users/profile/${req.session.user.id}`)
+        db.productos.destroy({
+            where: {id:idProducto}
+        })
+        .then(function(data){
+            res.redirect("/")
+        })
     }
 }
 

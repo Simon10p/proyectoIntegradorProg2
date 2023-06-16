@@ -27,7 +27,6 @@ const usersController = {
         perfil_logueado = true
 
       }
-      //let idLogueado = req.session.user.id
       db.usuarios.findByPk(idPerfil, {
         order: [["usuarios_productos",'createdAt', 'DESC']],
         include: [{association:"usuarios_productos"}, {association:"usuarios_comentarios"}]
@@ -47,7 +46,7 @@ const usersController = {
       db.usuarios.findByPk(id)
       .then(function(data){
         res.render('profile-edit', {
-          user : data
+          usuario : data
       });
       })
       .catch(function(error){
@@ -71,40 +70,58 @@ const usersController = {
       let DNI = req.body.DNI
       let cumpleaños = req.body.cumpleaños
       let foto_perfil = req.body.foto_perfil
-      if ((email.includes('@')) && (email.includes('.')) && (password.length > 6))
-      {
-        let passEncriptada = bcrypt.hashSync(password, 12)
-        db.usuarios.create({
-          username,
-          email,
-          password: passEncriptada,
-          DNI,
-          cumpleaños,
-          foto_perfil
+      if ((email == "") || (password.length < 3)){
+        let errors = {}
+        if (password <= 3){
+            errors.message= "debes ingresar una contraseña con al menos 4 caracteres"
+        }else if(email == ""){
+            errors.message= "El mail ingresado no es valido"
+        } 
+        res.locals.errors = errors
+        res.render('register')
+      }
+      else{
+        db.usuarios.findOne({
+          where:{
+            email:email
+          }
         })
-        .then(function(response){
-          //aca entonces lo mando por el res redirect???
-          res.redirect("/users/login") // hay que borrar todo los "+" y los que va despues?
+        .then(function(data){
+          if(data){
+            let errors = {}
+            errors.message = "Ya existe un usuario registrado con ese mail"
+            res.locals.errors = errors
+            res.render("register")
+          }
+          else{
+            let passEncriptada = bcrypt.hashSync(password, 12)
+            db.usuarios.create({
+              username,
+              email,
+              password: passEncriptada,
+              DNI,
+              cumpleaños,
+              foto_perfil
+            })
+            .then(function(data){
+              res.redirect("/users/login")
+            })
+            .catch(function(error){
+              console.log(error)
+            })
+          }
         })
         .catch(function(error){
           console.log(error)
         })
-      } else{
-        let errors = {}
-        errors.message = "Los datos de registro presentan erorrers"
-        res.locals.errors = errors
-        res.render('register')
       }
     },
-
     checkUser: function(req,res){
       let {email, password, recordarme} = req.body
-
       db.usuarios.findOne({
         where:{
           email
         },
-
       })
       .then(function(usuario){
         if(usuario != null){
@@ -152,25 +169,40 @@ const usersController = {
     },
     updateProfile: function(req, res){
       let id = req.params.id
-      let {username, email, DNI, cumpleaños, foto_perfil} = req.body
-      db.usuarios.update({
-          username,
-          email,
-          foto_perfil,
-          DNI,
-          cumpleaños
-      },
-      {
-          where:{id}
+      let {username, email, DNI, cumpleaños, foto_perfil, password} = req.body
+
+      db.usuarios.findByPk(id)
+      .then(function(usuario){
+        let checkPassword = bcrypt.compareSync(password, usuario.password)
+        if(checkPassword){
+          req.session.user = {
+            id: id,
+            username: username,
+            email: email
+          }
+          db.usuarios.update({
+            username,
+            email,
+            foto_perfil,
+            DNI,
+            cumpleaños
+        },
+        {
+            where:{id}
+        })
+        .then(function(response){
+          res.redirect(`/users/profile/${id}`)
       })
-      .then(function(response){
-          response.redirect("/users/profile" + id)
+      }
+      else{
+        let errors = {}
+        errors.message = "La contraseña ingresada es incorrecta, vuelva a intentar"
+        res.locals.errors = errors
+      }
       })
       .catch(function(error){
         console.log(error)
       })
     }
-
-    }
-
+}
 module.exports = usersController
