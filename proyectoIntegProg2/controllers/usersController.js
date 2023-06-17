@@ -150,17 +150,18 @@ const usersController = {
           
         }
         else{
-        let errors = {}
-        errors.message = "La contraseña ingresada es incorrecta, vuelva a intentar"
-        res.locals.errors = errors
+          let errors = {}
+          errors.message = ("La contraseña ingresada es incorrecta, vuelva a intentar")
+          res.locals.errors = errors
+          return res.render("login")
         }
         }
         else{
-        let errors = {}
-        errors.message = "El usuario ingresado no existe"
-        res.locals.errors = errors
-        res.render('register')
-        }
+          let errors = {}
+          errors.message = ("El usuario ingresado no existe")
+          res.locals.errors = errors
+          res.render('register')
+          }
       })
       .catch(function(error){
         console.log(error)

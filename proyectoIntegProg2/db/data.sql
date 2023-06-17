@@ -29,13 +29,13 @@ SET time_zone = "+00:00";
 DROP schema datamsn;
 Create schema datamsn;
 	USE datamsn;
-    CREATE TABLE `usuarios` (
+CREATE TABLE `usuarios` (
   `id` int(10) UNSIGNED NOT NULL,
   `username` varchar(30) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(200) NOT NULL,
   `foto_perfil` varchar(255) DEFAULT NULL,
-  `cumpleaÃ±os` datetime NOT NULL,
+  `cumpleaños` datetime NOT NULL,
   `DNI` int(11) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
   `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -46,7 +46,7 @@ Create schema datamsn;
 -- Dumping data for table `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `username`, `email`, `password`, `foto_perfil`, `cumpleaÃ±os`, `DNI`, `createdAt`, `updatedAt`, `deletedAt`) VALUES
+INSERT INTO `usuarios` (`id`, `username`, `email`, `password`, `foto_perfil`, `cumpleaños`, `DNI`, `createdAt`, `updatedAt`, `deletedAt`) VALUES
 (1, 'Mateo', 'mp@gmail.com', 'pupo123', NULL, '2003-10-08 00:00:00', 45074659, '2023-05-29 18:14:21', '2023-05-29 18:14:21', '2023-05-29 18:14:21'),
 (2, 'ElPela', 'peladooo@gmail.com', 'sinpelo123', NULL, '0000-00-00 00:00:00', 46026839, '2023-05-29 18:14:21', '2023-05-29 18:14:21', '2023-05-29 18:14:21'),
 (3, 'Shakant', 'nico-tina@outlook.com', 'andapaalla', NULL, '2002-03-06 00:00:00', 46834788, '2023-05-29 18:14:21', '2023-05-29 18:14:21', '2023-05-29 18:14:21'),
@@ -114,7 +114,7 @@ INSERT INTO `comentarios` (`id`, `producto_id`, `usuario_id`, `comentario`, `cre
 (10, 3, 2, 'Que miedo que me dio cuando perdimos contra estos', '2023-05-29 18:14:21', '2023-05-29 18:14:21', '2023-05-29 18:14:21'),
 (11, 3, 2, 'Holaaaaa. Porque no me responde nadie', '2023-05-29 18:14:21', '2023-05-29 18:14:21', '2023-05-29 18:14:21'),
 (12, 3, 2, 'Queda stock?', '2023-05-29 18:14:21', '2023-05-29 18:14:21', '2023-05-29 18:14:21'),
-(13, 4, 2, 'Gran regalo de cumpleaÃ±os para mis nietos. Muchas Gracias!', '2023-05-29 18:14:21', '2023-05-29 18:14:21', '2023-05-29 18:14:21'),
+(13, 4, 2, 'Gran regalo de cumpleaños para mis nietos. Muchas Gracias!', '2023-05-29 18:14:21', '2023-05-29 18:14:21', '2023-05-29 18:14:21'),
 (14, 4, 2, 'Queda la de grizu?', '2023-05-29 18:14:21', '2023-05-29 18:14:21', '2023-05-29 18:14:21'),
 (15, 4, 2, 'No queda stock ni a palos no?', '2023-05-29 18:14:21', '2023-05-29 18:14:21', '2023-05-29 18:14:21'),
 (16, 4, 2, 'Garate y el kÃ¼n fueron los mayores idolos de este club. Creados en EspaÃ±a, coronados por Argentinos.', '2023-05-29 18:14:21', '2023-05-29 18:14:21', '2023-05-29 18:14:21'),
