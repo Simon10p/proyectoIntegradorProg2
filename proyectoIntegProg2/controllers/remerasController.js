@@ -1,15 +1,15 @@
-const db = require("../database/models/index")
+const db = require("../database/models/index") // requeris la configuracion del modelo de index
 const Op = db.Sequelize.Op
 
 const remerasController ={
     product: function(req,res){
         //let id = req.session.user.id
         let id = req.params.id
-        db.productos.findByPk(id, {
+        db.productos.findByPk(id, { // (esta es la promesa) buscas en la tabla de productos por pk un id, porque cada camiseta era respresentada por su id
             nest: true,
             include: [{association:"productos_usuarios"},{association: "productos_comentarios", include: {association: "comentarios_usuarios"}}],
         })
-        .then(function(data){
+        .then(function(data){ // el .then ejectura la promesa que es lo anterior 
             // res.send(data)
 
             res.render('product',{

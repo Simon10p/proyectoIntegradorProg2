@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; // configuracion para conectar visual con  sql
 
 const fs = require('fs');
 const path = require('path');
